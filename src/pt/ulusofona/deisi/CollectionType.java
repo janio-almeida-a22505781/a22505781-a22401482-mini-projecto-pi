@@ -1,5 +1,7 @@
 package pt.ulusofona.deisi;
 
+import java.util.Objects;
+
 public enum CollectionType {
     MOVIES(1, "Filme"),
     GAMES(2, "Jogos"),
@@ -21,9 +23,9 @@ public enum CollectionType {
         return name;
     }
 
-    public static CollectionType fromCode(int code) {
+    public static CollectionType fromCode(int code, String name) {
         for (CollectionType opt : values()) {
-            if(opt.code == code) {
+            if(opt.code == code|| Objects.equals(opt.name, name)) {
                 return opt;
             }
         }

@@ -1,5 +1,8 @@
 package pt.ulusofona.deisi;
-
+/**
+ * Representa a estrutura de dados de um item da coleção,
+ * contendo seus atributos essenciais.
+ */
 public class Item {
     String titulo;
     String genero;

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javadoc - Coleção LLM</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; color: #222; }
+    header { background:#003366; color:#fff; padding:18px 28px; }
+    header h1 { margin:0; font-size:20px; }
+    .container { display:flex; height: calc(100vh - 78px); }
+    nav { width:260px; border-right:1px solid #e0e0e0; padding:18px; box-sizing:border-box; overflow:auto; background:#fafafa }
+    main { flex:1; padding:24px; overflow:auto }
+    a { color:#003366; text-decoration:none }
+    a:hover { text-decoration:underline }
+    .class-card { border:1px solid #e6e6e6; border-radius:6px; padding:16px; margin-bottom:18px; background:#fff }
+    h2 { margin-top:0 }
+    .signature { font-family: monospace; background:#f5f5f5; padding:8px; border-radius:4px; display:inline-block }
+    .section-title { font-weight:600; margin-bottom:8px; margin-top:18px }
+    footer { padding:10px 18px; font-size:13px; color:#666; border-top:1px solid #eee }
+    .small { font-size:13px; color:#555 }
+    .badge { display:inline-block; background:#eef6ff; color:#003366; padding:4px 8px; border-radius:12px; font-size:12px; margin-right:8px }
+    ul { padding-left:18px }
+    pre { background:#f8f8f8; padding:12px; border-radius:6px; overflow:auto }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Javadoc - Funcionalidade: Sugestão de item por mood (LLM)</h1>
+    <div class="small">Gerado automaticamente — classes definidas pelo usuário</div>
+  </header>
+  <div class="container">
+    <nav>
+      <div class="badge">Pacote padrão</div>
+      <h3>Classes</h3>
+      <ul>
+        <li><a href="#Main">Main</a></li>
+        <li><a href="#LLMCollection">LLMCollection</a></li>
+        <li><a href="#LLMInteractionEngine">LLMInteractionEngine</a></li>
+        <li><a href="#Item">Item</a></li>
+      </ul>
+      <hr>
+      <div class="small">Resumo rápido</div>
+      <ul>
+        <li><strong>Main</strong> — configurações e inicialização do projeto.</li>
+        <li><strong>LLMCollection</strong> — processa input do usuário e resposta do LLM.</li>
+        <li><strong>LLMInteractionEngine</strong> — comunica com o LLM (API, prompts).</li>
+        <li><strong>Item</strong> — estrutura de dados de um item da coleção.</li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="Main" class="class-card">
+        <h2>Class Main</h2>
+        <div class="signature">public class Main</div>
+        <p><em>Descrição curta:</em> Classe principal do projeto. Responsável por definir as configurações iniciais e inicializar o sistema.</p>
+
+        <div class="section-title">Responsabilidades</div>
+        <ul>
+          <li>Carregar configurações (arquivo, variáveis de ambiente, etc.).</li>
+          <li>Inicializar instâncias necessárias (LLMInteractionEngine, LLMCollection).</li>
+          <li>Configurar logging e métricas básicas.</li>
+          <li>Iniciar o fluxo de execução (ex.: interface CLI ou servidor).</li>
+        </ul>
+
+        <div class="section-title">Exemplo de uso</div>
+        <pre>// Exemplo simplificado
+public static void main(String[] args) {
+    Config config = Config.load();
+    LLMInteractionEngine engine = new LLMInteractionEngine(config.getApiKey());
+    LLMCollection collection = new LLMCollection(engine);
+    collection.suggestByMood("alegre");
+}
+        </pre>
+      </section>
+
+      <section id="LLMCollection" class="class-card">
+        <h2>Class LLMCollection</h2>
+        <div class="signature">public class LLMCollection</div>
+        <p><em>Descrição curta:</em> Responsável por processar o input do usuário e tratar a resposta do modelo LLM.</p>
+
+        <div class="section-title">Responsabilidades</div>
+        <ul>
+          <li>Receber o "mood" do usuário e formatar prompts apropriados.</li>
+          <li>Enviar prompts para LLMInteractionEngine e parsear respostas.</li>
+          <li>Gerar objetos <code>Item</code> sugeridos com base na resposta.</li>
+          <li>Aplicar regras de negócios (filtros, pontuação, fallback).</li>
+        </ul>
+
+        <div class="section-title">Métodos públicos sugeridos</div>
+        <ul>
+          <li><code>List&lt;Item&gt; suggestByMood(String mood)</code> — retorna itens sugeridos.</li>
+          <li><code>void addItem(Item item)</code> — adiciona item à coleção interna.</li>
+          <li><code>Optional&lt;Item&gt; pickBest(List&lt;Item&gt; items)</code> — seleciona o melhor item.</li>
+        </ul>
+      </section>
+
+      <section id="LLMInteractionEngine" class="class-card">
+        <h2>Class LLMInteractionEngine</h2>
+        <div class="signature">public class LLMInteractionEngine</div>
+        <p><em>Descrição curta:</em> Responsável por realizar a comunicação direta com o LLM, encapsulando chamadas, prompts e retornos.</p>
+
+        <div class="section-title">Responsabilidades</div>
+        <ul>
+          <li>Gerenciar chamadas HTTP/SDK para o provedor LLM (ex.: API key, timeout).</li>
+          <li>Serializar prompts e desserializar respostas.</li>
+          <li>Tratar erros, retrys e limites de taxa.</li>
+          <li>Fornecer métodos de alto nível: <code>String query(String prompt)</code>.</li>
+        </ul>
+
+        <div class="section-title">Métodos públicos sugeridos</div>
+        <ul>
+          <li><code>String sendPrompt(String prompt)</code></li>
+          <li><code>String sendPrompt(String prompt, Map&lt;String,Object&gt; options)</code></li>
+          <li><code>void close()</code> — liberar recursos/threads.</li>
+        </ul>
+      </section>
+
+      <section id="Item" class="class-card">
+        <h2>Class Item</h2>
+        <div class="signature">public class Item</div>
+        <p><em>Descrição curta:</em> Representa a estrutura de dados de um item da coleção, contendo seus atributos essenciais.</p>
+
+        <div class="section-title">Campos sugeridos</div>
+        <ul>
+          <li><code>String id</code> — identificador único.</li>
+          <li><code>String name</code> — nome do item.</li>
+          <li><code>String description</code> — descrição curta.</li>
+          <li><code>double score</code> — pontuação de relevância.</li>
+          <li><code>Map&lt;String,String&gt; metadata</code> — metadados adicionais.</li>
+        </ul>
+
+        <div class="section-title">Métodos sugeridos</div>
+        <ul>
+          <li><code>public static Item fromLLMResponse(String response)</code> — parsear resposta bruta.</li>
+          <li><code>public String toJson()</code> — serializar para JSON.</li>
+        </ul>
+      </section>
+
+      <footer>
+        Este HTML funciona como uma documentação estática estilo Javadoc para as classes fornecidas.
+        <div class="small">Gerado em: <!-- date injected by user view --> </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
+
+
+
+@startuml
+
+title Arquitetura - Funcionalidade LLM (Sugestão por mood)
+
+class Main {
+    +main(args: String[])
+}
+
+class LLMCollection {
+    +suggestByMood(mood: String) : List<Item>
+    +addItem(item: Item)
+    +pickBest(items: List<Item>) : Item
+}
+
+class LLMInteractionEngine {
+    +sendPrompt(prompt: String) : String
+    +sendPrompt(prompt: String, options: Map<String,Object>) : String
+    +close()
+}
+
+class Item {
+    -id: String
+    -name: String
+    -description: String
+    -score: double
+    -metadata: Map<String,String>
+    +fromLLMResponse(response: String) : Item
+    +toJson() : String
+}
+
+Main --> LLMCollection : inicializa
+LLMCollection --> LLMInteractionEngine : usa para enviar prompt
+LLMCollection --> Item : produz/gera itens
+@enduml

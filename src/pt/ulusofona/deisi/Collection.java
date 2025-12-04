@@ -35,4 +35,10 @@ public class Collection {
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+    /*Estou "...", me recomende uma música baseada nessa lista das músicas que eu gosto(me de somente o nome da música):
+     1) ...
+
+     Estou "...", me recomende uma música dessa lista das músicas que eu gosto(me de somente o nome da música):
+     1) ...
+     */
 }
