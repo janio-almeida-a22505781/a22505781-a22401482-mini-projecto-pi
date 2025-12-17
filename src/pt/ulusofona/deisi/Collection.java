@@ -35,6 +35,16 @@ public class Collection {
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+    public boolean selecionaCollection(int i){
+        if (i==1){
+            this.tipo = "Filme";
+            return true;
+        }
+        return false;
+    }
+    public String pedirSugestao(){
+        return "";
+    }
     /*Estou "...", me recomende uma música baseada nessa lista das músicas que eu gosto(me de somente o nome da música):
      1) ...
 

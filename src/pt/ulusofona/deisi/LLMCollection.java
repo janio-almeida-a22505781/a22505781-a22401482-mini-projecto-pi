@@ -8,10 +8,11 @@ public class LLMCollection {
 
     static int askUserForChoice() {
 
-        int collectionType;
+        CollectionType collectionType;
         int option;
         String texto;
         String texto1;
+        Collection colecao = new Collection("",null);
 
         do {
             Scanner sc = new Scanner(System.in);
@@ -20,10 +21,10 @@ public class LLMCollection {
                     "2) Jogos \n" +
                     "3) Musicas \n");
             texto = sc.nextLine();
-            collectionType = CollectionType.fromCode(Integer.parseInt(texto),texto).getCode();
+            collectionType = CollectionType.fromCode(Integer.parseInt(texto),texto);
 
         } while (
-                collectionType != 1 && collectionType != 2 && collectionType !=3
+                colecao.selecionaCollection(collectionType)
         );
 
         do {
@@ -38,7 +39,7 @@ public class LLMCollection {
 
             option = Integer.parseInt(texto);
 
-            processOption(option);
+            processOption(option, collectionType);
         } while (option != 5);
 
         return option;
