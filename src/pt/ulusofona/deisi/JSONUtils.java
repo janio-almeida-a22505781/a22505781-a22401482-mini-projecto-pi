@@ -35,7 +35,7 @@ public class JSONUtils {
 
     // Very naive JSON string field extractor: "key": "value"
     // Does not work if multiple sub-fields have the same key
-    static String getJsonString(String json, String key) {
+    public static String getJsonString(String json, String key) {
         String pattern = "\"" + key + "\"";
         int keyPos = json.indexOf(pattern);
         if (keyPos < 0) return null;
