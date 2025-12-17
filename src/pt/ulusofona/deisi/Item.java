@@ -8,6 +8,10 @@ public class Item {
     String genero;
     String descricao;
 
+    public Item(String titulo) {
+        this.titulo = titulo;
+    }
+
     public Item(String titulo, String tipo, String genero, String descricao) {
         this.titulo = titulo;
         this.genero = genero;

@@ -1,11 +1,12 @@
 package pt.ulusofona.deisi;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
 public class Main {
-    static String apiKey = "sk-TDYYkqfy9CTTEMzW9KjmKg";
-    static String url = "https://modelos.ai.ulusofona.pt/v1/completions";
-    static String model = "gpt-4-turbo";
-    static boolean useHack = true;
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InterruptedException, KeyManagementException {
 
         int i = LLMCollection.askUserForChoice();
     }
