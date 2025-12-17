@@ -18,6 +18,11 @@ public class Item {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        return titulo;
+    }
+
     public String getTitulo() {
         return titulo;
     }

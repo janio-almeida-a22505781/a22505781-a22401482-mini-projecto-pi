@@ -65,6 +65,7 @@ public class LLMCollection {
                 break;
             case 4:
                 pedirSugestao();
+
                 break;
             case 5:
                 break;
