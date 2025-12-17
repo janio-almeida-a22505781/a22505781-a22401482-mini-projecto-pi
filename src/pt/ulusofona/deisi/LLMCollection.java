@@ -38,7 +38,7 @@ public class LLMCollection {
 
         do {
             Scanner sc = new Scanner(System.in);
-            texto1 = sc.nextLine();
+
             System.out.println("Escolha a sua opção:");
             System.out.println("1) Adicionar item a coleção");
             System.out.println("2) Remover item da coleção");
@@ -46,7 +46,8 @@ public class LLMCollection {
             System.out.println("4) Recomendação com base no mood");
             System.out.println("5) Sair");
 
-            option = Integer.parseInt(texto);
+            texto1 = sc.nextLine();
+            option = Integer.parseInt(texto1);
 
             processOption(option);
         } while (option != 5);
@@ -93,9 +94,13 @@ public class LLMCollection {
         Scanner sc = new Scanner(System.in);
         System.out.println("Qual o seu mood atual ? (triste, feliz, empolgado ...)");
         String texto = sc.nextLine();
-        String prompt = collectionDefault.getItems().toString() +"\nEstou me sentindo " + texto + " me recomende uma música baseada nessa lista das músicas que eu gosto(me de somente o nome da música)";
+        String prompt = collectionDefault.getItems().toString() +". Estou me sentindo " + texto + " me recomende uma música baseada nessa lista das músicas que eu gosto(me de somente o nome da música e nada mais, não escreva aspas nem simples)";
 
         String resposta = llm.sendPrompt(prompt);
+
+        System.out.println(resposta);
+
+        resposta = JSONUtils.getJsonString(resposta, "text");
 
         System.out.println(resposta);
     }
