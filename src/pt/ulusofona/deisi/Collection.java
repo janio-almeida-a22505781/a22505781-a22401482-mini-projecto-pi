@@ -7,6 +7,11 @@ public class Collection {
     String tipo;
     ArrayList<Item> items;
 
+    public Collection(String tipo) {
+        this.tipo = tipo;
+        this.items = new ArrayList<>();
+    }
+
     public Collection(String tipo, ArrayList<Item> items) {
         this.tipo = tipo;
         this.items = items;
