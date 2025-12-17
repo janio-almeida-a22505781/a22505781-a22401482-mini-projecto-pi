@@ -1,4 +1,11 @@
-package pt.ulusofona.deisi;
+import pt.ulusofona.deisi.Collection;
 
-public class Teste {
+class Teste {
+
+    @Test
+    void deveTerItens() {
+        Collection collectionDefault = Collection.gerarCollectionDefault();
+
+        assertEquals(collectionDefault.getItems(), 10);
+    }
 }

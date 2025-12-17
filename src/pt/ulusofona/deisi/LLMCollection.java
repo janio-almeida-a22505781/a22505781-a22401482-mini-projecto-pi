@@ -74,22 +74,7 @@ public class LLMCollection {
     public static void pedirSugestao() throws IOException, NoSuchAlgorithmException, InterruptedException, KeyManagementException {
         LLMInteractionEngine llm = new LLMInteractionEngine(url, apiKey, model, useHack);
 
-        Collection collectionDefault = new Collection(
-                "Músicas",
-                new ArrayList<>(Arrays.asList(
-                        new Item("Bohemian Rhapsody"),
-                        new Item("Smells Like Teen Spirit") ,
-                        new Item("Billie Jean"),
-                        new Item("Bohemian Rhapsody"),
-                        new Item("Imagine"),
-                        new Item("Sweet Child O' Mine"),
-                        new Item("Hey Jude"),
-                        new Item("Rolling in the Deep"),
-                        new Item("Shape of You"),
-                        new Item("Lose Yourself")
-                ))
-        );
-
+        Collection collectionDefault = Collection.gerarCollectionDefault();
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Qual o seu mood atual ? (triste, feliz, empolgado ...)");

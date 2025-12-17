@@ -1,6 +1,7 @@
 package pt.ulusofona.deisi;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Collection {
     String tipo;
@@ -35,20 +36,22 @@ public class Collection {
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
-    public boolean selecionaCollection(int i){
-        if (i==1){
-            this.tipo = "Filme";
-            return true;
-        }
-        return false;
-    }
-    public String pedirSugestao(){
-        return "";
-    }
-    /*Estou "...", me recomende uma música baseada nessa lista das músicas que eu gosto(me de somente o nome da música):
-     1) ...
 
-     Estou "...", me recomende uma música dessa lista das músicas que eu gosto(me de somente o nome da música):
-     1) ...
-     */
+    public static Collection gerarCollectionDefault() {
+        return new Collection(
+                "Músicas",
+                new ArrayList<>(Arrays.asList(
+                        new Item("Bohemian Rhapsody"),
+                        new Item("Smells Like Teen Spirit") ,
+                        new Item("Billie Jean"),
+                        new Item("Bohemian Rhapsody"),
+                        new Item("Imagine"),
+                        new Item("Sweet Child O' Mine"),
+                        new Item("Hey Jude"),
+                        new Item("Rolling in the Deep"),
+                        new Item("Shape of You"),
+                        new Item("Lose Yourself")
+                ))
+        );
+    }
 }
